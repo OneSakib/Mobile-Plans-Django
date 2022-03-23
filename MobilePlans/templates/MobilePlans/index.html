@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-3 row">
+        <div class="col-1"></div>
+        <div class="col-10">
+            <h1 class="text-center text-white bg-primary p-2">Mobile Plans</h1>
+            <form class=" row g-3" action="" method="post">
+            {% csrf_token %}
+                <div class="col-auto">
+                    <select class="form-select" aria-label="Default select example" name="circle">
+                        {% with circle=data.circle %}
+                            {% for c in circle %}
+                                {% if forloop.counter == 2 %}
+                                    <option selected>andhra-pradesh</option>
+                                {% else %}
+                                    <option>{{ c }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" aria-label="Default select example" name="operator">
+                        {% with operator=data.operator %}
+                            {% for o in operator %}
+                                {% if forloop.counter == 2 %}
+                                    <option selected>airtel</option>
+                                {% else %}
+                                    <option>{{ o }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select" aria-label="Default select example" name="plan">
+                        {% with plans=data.plans %}
+                            {% for p in plans %}
+                                {% if forloop.counter == 1 %}
+                                    <option selected>--ALL--</option>
+                                {% else %}
+                                    <option>{{ p }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        {% endwith %}
+                    </select>
+                </div>
+                <div class="col-auto">
+                    <input value="Submit" type="submit" class="btn btn-primary" id="btnsubmit">
+                </div>
+            </form>
+            <hr>
+            <table class="table text-center">
+                <thead>
+                <tr>
+                    <th scope="col">Price</th>
+                    <th scope="col">Validity</th>
+                    <th scope="col" colspan="2">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% with da=data.data %}
+                    {% for d in da %}
+                        <tr>
+                            {% for m in d %}
+                                <td>{{ m }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                {% endwith %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
