@@ -10,12 +10,11 @@ def index(request):
         circle = request.POST['circle']
         operator = request.POST['operator']
         plan = request.POST['plan']
-        if plan == '--ALL--':
-            plan = ''
-        data = obj.get_data(circle=circle, operator=operator, plan=plan)
+        data = obj.get_data(circle=obj.circle[circle], operator=obj.operator[operator], plan=obj.plans[plan])
     else:
         data = obj.get_data()
-        circle='andhra-pradesh'
-        operator='airtel'
-        plan='all'
-    return render(request, 'MobilePlans/index.html', context={'data': data,'circle':circle,'operator':operator,'plan':plan})
+        circle = 'Andhra Pradesh'
+        operator = 'Airtel'
+        plan = 'All'
+    return render(request, 'MobilePlans/index.html',
+                  context={'data': data, 'circle': circle, 'operator': operator, 'plan': plan})

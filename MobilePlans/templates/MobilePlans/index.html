@@ -12,9 +12,9 @@
                 <div class="col-auto">
                     <select class="form-select" aria-label="Default select example" name="circle">
                         {% with circle=data.circle %}
-                            {% for c in circle %}
+                            {% for c in circle.keys %}
                                 {% if forloop.counter == 2 %}
-                                    <option selected>andhra-pradesh</option>
+                                    <option selected>Andhra Pradesh</option>
                                 {% else %}
                                     <option>{{ c }}</option>
                                 {% endif %}
@@ -25,9 +25,9 @@
                 <div class="col-auto">
                     <select class="form-select" aria-label="Default select example" name="operator">
                         {% with operator=data.operator %}
-                            {% for o in operator %}
+                            {% for o in operator.keys %}
                                 {% if forloop.counter == 2 %}
-                                    <option selected>airtel</option>
+                                    <option selected>Airtel</option>
                                 {% else %}
                                     <option>{{ o }}</option>
                                 {% endif %}
@@ -38,7 +38,7 @@
                 <div class="col-auto">
                     <select class="form-select" aria-label="Default select example" name="plan">
                         {% with plans=data.plans %}
-                            {% for p in plans %}
+                            {% for p in plans.keys %}
                                 {% if forloop.counter == 1 %}
                                     <option selected>--ALL--</option>
                                 {% else %}
@@ -59,7 +59,7 @@
                 <i class="list-item">Operator : <b>{{ operator }}</b></i>
                 <i class="list-item">Plan : <b>{{ plan }}</b></i>
             </ul>
-            <table class="table text-center">
+            <table class="table text-center table-responsive-sm">
                 <thead>
                 <tr>
                     <th scope="col">Price</th>
