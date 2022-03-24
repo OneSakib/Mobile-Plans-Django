@@ -15,4 +15,7 @@ def index(request):
         data = obj.get_data(circle=circle, operator=operator, plan=plan)
     else:
         data = obj.get_data()
-    return render(request, 'MobilePlans/index.html', context={'data': data})
+        circle='andhra-pradesh'
+        operator='airtel'
+        plan='all'
+    return render(request, 'MobilePlans/index.html', context={'data': data,'circle':circle,'operator':operator,'plan':plan})

@@ -4,8 +4,11 @@
         <div class="col-1"></div>
         <div class="col-10">
             <h1 class="text-center text-white bg-primary p-2">Mobile Plans</h1>
+            <h5>Data Source from: <a href="https://telecom.economictimes.indiatimes.com/recharge-plans/">telecom.economictimes.indiatimes.com</a>
+            </h5>
             <form class=" row g-3" action="" method="post">
-            {% csrf_token %}
+
+                {% csrf_token %}
                 <div class="col-auto">
                     <select class="form-select" aria-label="Default select example" name="circle">
                         {% with circle=data.circle %}
@@ -50,6 +53,12 @@
                 </div>
             </form>
             <hr>
+            <ul class="list-unstyled">
+                <h5>Your Selected Data :</h5>
+                <i class="list-item">Circle :<b> {{ circle }}</b></i>
+                <i class="list-item">Operator : <b>{{ operator }}</b></i>
+                <i class="list-item">Plan : <b>{{ plan }}</b></i>
+            </ul>
             <table class="table text-center">
                 <thead>
                 <tr>
